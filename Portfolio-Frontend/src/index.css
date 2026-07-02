@@ -1,0 +1,55 @@
+@import 'tailwindcss';
+
+:root {
+    --bg-color: black;
+    --text-color: white;
+    --border-color: black;
+}
+
+* {
+    font-family: monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+}
+
+/*-----Navber-----*/
+
+.nav-container {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-items ul li a:hover {
+    color: gray;
+}
+
+/*-----Hero-----*/
+
+.hero-main-text {
+    -webkit-text-stroke: 5px black;
+    font-family: Impact;
+}
+
+/*-----Spotlight-----*/
+
+.spotlight {
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+
+  background: rgb(255, 255, 255);
+  mix-blend-mode: difference;
+
+
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  z-index: 0;
+}
+
+/*-----WhoAmI-----*/
+
