@@ -64,3 +64,22 @@ body {
 
 /*-----WhoAmI-----*/
 
+
+
+
+
+
+
+
+
+
+/*-----Contact-----*/
+
+.contact-form input,textarea {
+    font-size: larger;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    border: none;
+    border-bottom: 2px solid var(--text-color);
+    border-radius: 0;
+}
