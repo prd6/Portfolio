@@ -17,7 +17,9 @@ const Contact = () => {
   };
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-between px-20">
+    <div
+    id="contact"
+    className="w-full min-h-screen flex items-center justify-between px-20">
 
       {/* Left Side */}
       <div className="flex items-center w-1/2 pl-40">
