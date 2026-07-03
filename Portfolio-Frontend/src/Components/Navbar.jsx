@@ -13,7 +13,6 @@ const Navber = () => {
 
             <div className="nav-items mr-5 p-2 rounded-3xl w-2/5 flex justify-center">
                 <ul className="w-full flex justify-around items-center text-lg overflow-x-hidden">
-                    <li><a href="">WhoAmI</a></li>
                     <li><a href="">Works</a></li>
                     <li><a href="">Constributions</a></li>
                     <li><a href="">Achivements</a></li>

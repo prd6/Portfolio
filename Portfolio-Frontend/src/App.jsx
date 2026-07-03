@@ -4,7 +4,6 @@ import Achivements from "./pages/Achivements"
 import Constributions from "./pages/Constributions"
 import Contact from "./pages/Contact"
 import Hero from "./pages/Hero"
-import WhoAmI from "./pages/WhoAmI"
 import Works from "./pages/Works"
 
 const App = () => {
@@ -15,7 +14,6 @@ const App = () => {
         <Navber />
         <Hero />
       </div>
-      <WhoAmI />
       <Works />
       <Constributions />
       <Achivements />
