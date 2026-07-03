@@ -10,14 +10,16 @@ import Works from "./pages/Works"
 const App = () => {
   return (
     <div>
-        <Spotlight/>
-        <Navber/>
-        <Hero/>
-        <WhoAmI/>
-        <Works/>
-        <Constributions/>
-        <Achivements/>
-        <Contact/>
+      <div className="landing">
+        <Spotlight />
+        <Navber />
+        <Hero />
+      </div>
+      <WhoAmI />
+      <Works />
+      <Constributions />
+      <Achivements />
+      <Contact />
     </div>
   )
 }

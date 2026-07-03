@@ -1,35 +1,45 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 
 export default function Spotlight() {
-  useEffect(() => {
-    const spotlight = document.querySelector(".spotlight");
+  const spotlightRef = useRef(null);
 
-    let mouseX = 0,
-      mouseY = 0;
-    let x = 0,
-      y = 0;
+  useEffect(() => {
+    const container = document.querySelector(".landing");
+
+    if (!container) return;
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let x = 0;
+    let y = 0;
 
     const move = (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+      const rect = container.getBoundingClientRect();
+
+      mouseX = e.clientX - rect.left;
+      mouseY = e.clientY - rect.top;
     };
 
-    window.addEventListener("mousemove", move);
+    container.addEventListener("mousemove", move);
 
     function animate() {
       x += (mouseX - x) * 0.1;
       y += (mouseY - y) * 0.1;
 
-      spotlight.style.left = `${x}px`;
-      spotlight.style.top = `${y}px`;
+      if (spotlightRef.current) {
+        spotlightRef.current.style.left = `${x}px`;
+        spotlightRef.current.style.top = `${y}px`;
+      }
 
       requestAnimationFrame(animate);
     }
 
     animate();
 
-    return () => window.removeEventListener("mousemove", move);
+    return () => {
+      container.removeEventListener("mousemove", move);
+    };
   }, []);
 
-  return <div className="spotlight" />;
+  return <div ref={spotlightRef} className="spotlight"></div>;
 }

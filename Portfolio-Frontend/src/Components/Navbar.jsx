@@ -11,8 +11,8 @@ const Navber = () => {
                 Portfolio
             </div>
 
-            <div className="nav-items">
-                <ul className="flex gap-15 items-center mr-10 text-lg overflow-x-hidden">
+            <div className="nav-items mr-5 p-2 rounded-3xl w-2/5 flex justify-center">
+                <ul className="w-full flex justify-around items-center text-lg overflow-x-hidden">
                     <li><a href="">WhoAmI</a></li>
                     <li><a href="">Works</a></li>
                     <li><a href="">Constributions</a></li>
