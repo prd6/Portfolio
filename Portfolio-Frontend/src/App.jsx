@@ -1,7 +1,5 @@
 import Spotlight from "./Components/Spotlight"
 import Navber from "./Components/Navbar"
-import Achivements from "./pages/Achivements"
-import Constributions from "./pages/Constributions"
 import Contact from "./pages/Contact"
 import Hero from "./pages/Hero"
 import Works from "./pages/Works"
