@@ -2,7 +2,7 @@ const Navber = () => {
   return (
     <>
         <div className="nav-container
-        flex justify-between items-center w-full h-20 border-b-2 border-(--border-color) bg-(--bg-color) text-(--text-color) fixed z-10
+        flex justify-between items-center w-full h-20 border-b-2 border-(--border-color) bg-(--bg-color) text-(--text-color) fixed z-100
         ">
 
             <div className="nav-logo

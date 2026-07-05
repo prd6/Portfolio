@@ -1,11 +1,14 @@
+import { FaArrowRight } from "react-icons/fa";
+
 const Button = ({ type = "submit", onClick }) => {
   return (
     <button
       type={type}
       onClick={onClick}
-      className="flex items-center gap-3 border-2 border-black px-6 py-3 rounded-lg hover:bg-black hover:text-white transition-all duration-300"
+      className="submit-button
+      flex items-center gap-3 border-2 border-black px-6 py-3 rounded-lg"
     >
-      Send
+      Send <FaArrowRight/>
     </button>
   );
 };

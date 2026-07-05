@@ -123,3 +123,20 @@ textarea {
   border-bottom: 2px solid var(--text-color);
   border-radius: 0;
 }
+
+input:-webkit-autofill,
+textarea:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 1000px #000 inset !important;
+  -webkit-text-fill-color: #fff !important;
+}
+
+.submit-button {
+    cursor: pointer;
+    background: rgb(25, 25, 25);
+    opacity: 0.7;
+}
+
+.submit-button:hover {
+    opacity: 1;
+    color: var(--text-color);
+}
