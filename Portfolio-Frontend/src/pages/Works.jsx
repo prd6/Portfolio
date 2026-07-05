@@ -1,9 +1,20 @@
+import { useState, useEffect } from "react";
 import Card from "../Components/Cards";
 import FloatingIcons from "../Components/FloatingIcons";
-import projects from "../data/projects";
+import API_URL from "../api/api";
 import { FaGithub, FaArrowRight } from "react-icons/fa";
 
 const Works = () => {
+
+  const [projects, setProjects] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API_URL}/projects`)
+      .then((res) => res.json())
+      .then((data) => setProjects(data))
+      .catch((err) => console.error(err));
+  }, []);
+
   return (
     <div
       id="works"
@@ -40,7 +51,7 @@ const Works = () => {
         >
           {projects.map((project) => (
             <Card
-              key={project.id}
+              key={project._id}
               project={project}
             />
           ))}
