@@ -1,10 +1,31 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Card from "../Components/Cards";
 import FloatingIcons from "../Components/FloatingIcons";
 import API_URL from "../api/api";
-import { FaGithub, FaArrowRight } from "react-icons/fa";
+import {
+  FaGithub,
+  FaArrowRight,
+  FaChevronLeft,
+  FaChevronRight,
+} from "react-icons/fa";
 
 const Works = () => {
+
+  const scrollRef = useRef(null);
+
+const scrollLeft = () => {
+  scrollRef.current?.scrollBy({
+    left: -500,
+    behavior: "smooth",
+  });
+};
+
+const scrollRight = () => {
+  scrollRef.current?.scrollBy({
+    left: 500,
+    behavior: "smooth",
+  });
+};
 
   const [projects, setProjects] = useState([]);
 
@@ -41,21 +62,80 @@ const Works = () => {
           real-world problems.
         </p>
 
-        <div
-          className="
-          grid
-          md:grid-cols-2
-          xl:grid-cols-3
-          gap-8
-          "
-        >
-          {projects.map((project) => (
-            <Card
-              key={project._id}
-              project={project}
-            />
-          ))}
-        </div>
+        <div className="relative">
+
+  <button
+    onClick={scrollLeft}
+    className="leftscroll
+      absolute
+      left-0
+      top-1/2
+      -translate-y-1/2
+      z-20
+      w-12
+      h-12
+      rounded-full
+      border
+      border-(--border-color)
+      bg-(--bg-color)
+      flex
+      items-center
+      justify-center
+      hover:scale-110
+      transition
+    "
+  >
+    <FaChevronLeft />
+  </button>
+
+  <div
+    ref={scrollRef}
+    className="
+      flex
+      w-460
+      gap-8
+      overflow-x-auto
+      scroll-smooth
+      scrollbar-none
+      px-16
+      py-2
+    "
+  >
+    {projects.map((project) => (
+      <div
+        key={project._id}
+        className="max-w-142 max-h-full shrink-0"
+      >
+        <Card project={project} />
+      </div>
+    ))}
+  </div>
+
+  <button
+    onClick={scrollRight}
+    className="rightscroll
+      absolute
+      right-0
+      top-1/2
+      -translate-y-1/2
+      z-20
+      w-12
+      h-12
+      rounded-full
+      border
+      border-(--border-color)
+      bg-(--bg-color)
+      flex
+      items-center
+      justify-center
+      hover:scale-110
+      transition
+    "
+  >
+    <FaChevronRight />
+  </button>
+
+</div>
 
         <div className="flex justify-center mt-16">
           <a
