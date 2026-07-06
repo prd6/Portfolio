@@ -12,7 +12,7 @@ git reset --hard origin/main
 
 echo "🏗️ Building frontend..."
 cd Portfolio-Frontend
-npm ci
+npm install
 npm run build
 
 echo "📂 Deploying frontend..."
@@ -21,7 +21,7 @@ sudo cp -r dist/* /var/www/portfolio/
 
 echo "📦 Restarting backend..."
 cd ../Portfolio-Backend
-npm ci
+npm install
 
 pm2 restart portfolio-api
 
