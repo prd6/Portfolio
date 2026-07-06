@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import Lottie from "lottie-react";
 import Button from "../Components/Button";
 import sendAnimation from "../assets/send.json";
+import API_URL from "../api/api";
 
 const Contact = () => {
   const lottieRef = useRef();
@@ -18,17 +19,17 @@ const Contact = () => {
   });
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
+    setFormData((prev) => ({
+      ...prev,
       [e.target.name]: e.target.value,
-    });
+    }));
   };
 
   const submitHandler = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      const res = await fetch(`${API_URL}/contact`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -50,10 +51,9 @@ const Contact = () => {
         alert(data.message);
       }
     } catch (err) {
-      console.log(err);
+      console.error(err);
       alert("Something went wrong.");
     }
-
   };
 
   return (
@@ -68,11 +68,13 @@ const Contact = () => {
             <h2 className="text-8xl font-semibold">Contact</h2>
 
             <p className="text-lg">
-              Please feel free to contact and I will get back to you as soon as I can.
+              Please feel free to contact and I will get back to you as soon as
+              I can.
             </p>
           </div>
 
           <form
+            onSubmit={submitHandler}
             className="contact-form space-y-6 w-2/3"
           >
             <input
@@ -105,14 +107,14 @@ const Contact = () => {
               required
             />
 
-            <Button onClick={submitHandler} type="submit" />
+            <Button type="submit" />
           </form>
         </div>
       </div>
 
       {/* Right Side */}
       <div className="animation-div w-1/2 flex justify-center items-center">
-        <Lottie.default
+        <Lottie
           lottieRef={lottieRef}
           animationData={sendAnimation}
           autoplay={false}
