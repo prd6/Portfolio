@@ -114,7 +114,7 @@ const Contact = () => {
 
       {/* Right Side */}
       <div className="animation-div w-1/2 flex justify-center items-center">
-        <Lottie
+        <Lottie.default
           lottieRef={lottieRef}
           animationData={sendAnimation}
           autoplay={false}
