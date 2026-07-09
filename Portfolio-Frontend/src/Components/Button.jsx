@@ -6,7 +6,7 @@ const Button = ({ type = "submit", onClick }) => {
       type={type}
       onClick={onClick}
       className="submit-button
-      flex items-center gap-3 border-2 border-black px-6 py-3 rounded-lg"
+      flex items-center gap-3 md:p-2"
     >
       Send <FaArrowRight/>
     </button>

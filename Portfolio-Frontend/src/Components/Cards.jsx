@@ -1,89 +1,46 @@
-const Card = ({ project }) => {
+const Card = ({ project, API_URL }) => {
   return (
-    <div
-      className="card-container
-      rounded-2xl
-      overflow-hidden
-      transition-all
-      duration-300
-      hover:-translate-y-2
-      hover:shadow-xl
-      "
-    >
-      <div className="h-52 border-b border-(--border-color) overflow-hidden">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover"
-        />
-      </div>
+    <div className="rounded-3xl overflow-hidden border border-(--border-color) bg-[#181818] hover:-translate-y-2 transition-all duration-300">
+      <img
+        src={
+          project.image.startsWith("http")
+            ? project.image
+            : `${API_URL}${project.image}`
+        }
+        alt={project.title}
+        className="w-full h-56 object-cover"
+      />
 
       <div className="p-6">
+        <h3 className="text-2xl font-semibold">{project.title}</h3>
 
-        <h3 className="text-2xl font-semibold mb-3">
-          {project.title}
-        </h3>
-
-        <p className="text-(--text-color) mb-5">
+        <p className="text-gray-400 mt-3 line-clamp-3">
           {project.description}
         </p>
 
-        <div className="flex flex-wrap gap-2 mb-6">
-          {project.tech.map((item) => (
-            <span
-              key={item}
-              className="
-              px-3
-              py-1
-              text-sm
-              bg-(--bg-color)
-              border
-              border-(--border-color)
-              rounded-full
-              "
+        <div className="flex gap-3 mt-6">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-lg border border-gray-600 hover:bg-white hover:text-black transition"
             >
-              {item}
-            </span>
-          ))}
+              GitHub
+            </a>
+          )}
+
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-4 py-2 rounded-lg bg-white text-black hover:opacity-90 transition"
+            >
+              Live
+            </a>
+          )}
         </div>
-
-        <div className="flex gap-3">
-
-          <a
-            href={project.github}
-            className="
-            flex-1
-            text-center
-            py-2
-            border
-            border-black
-            rounded-lg
-            bg-(--bg-color)
-            hover:opacity-50
-            transition
-            "
-          >
-            GitHub
-          </a>
-
-          <a
-            href={project.live}
-            className="
-            flex-1
-            text-center
-            py-2
-            bg-(--bg-color)
-            text-(--text-color)
-            rounded-lg
-            hover:opacity-50
-            transition
-            "
-          >
-            Live
-          </a>
-
-        </div>
-
       </div>
     </div>
   );

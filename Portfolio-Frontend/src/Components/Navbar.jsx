@@ -1,28 +1,21 @@
-const Navber = () => {
-  return (
-    <>
-        <div className="nav-container
-        flex justify-between items-center w-full h-20 border-b-2 border-(--border-color) bg-(--bg-color) text-(--text-color) fixed z-100
-        ">
+import { useEffect, useState } from "react";
+import DesktopNav from "./DesktopNav";
+import MobileNav from "./MobileNav";
 
-            <div className="nav-logo
-            text-3xl font-semibold ml-5
-            ">
-                Portfolio
-            </div>
+const Navbar = () => {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-            <div className="nav-items mr-5 p-2 rounded-3xl w-2/5 flex justify-center">
-                <ul className="w-full flex justify-around items-center text-lg overflow-x-hidden">
-                    <li><a href="#works">Works</a></li>
-                    <li><a href="">Constributions</a></li>
-                    <li><a href="">Achivements</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </div>
-        
-        </div>
-    </>
-  )
-}
+  useEffect(() => {
+    const media = window.matchMedia("(max-width: 767px)");
 
-export default Navber
+    const handler = (e) => setIsMobile(e.matches);
+
+    media.addEventListener("change", handler);
+
+    return () => media.removeEventListener("change", handler);
+  }, []);
+
+  return isMobile ? <MobileNav /> : <DesktopNav />;
+};
+
+export default Navbar;

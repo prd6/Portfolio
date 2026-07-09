@@ -1,32 +1,11 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 import Card from "../Components/Cards";
-import FloatingIcons from "../Components/FloatingIcons";
+import { FaGithub, FaArrowRight } from "react-icons/fa";
 import API_URL from "../api/api";
-import {
-  FaGithub,
-  FaArrowRight,
-  FaChevronLeft,
-  FaChevronRight,
-} from "react-icons/fa";
+import LogoLoopController from "../Components/LogoLoop/LogoLoopController";
+import StarBorder from '../Components/StarBorder/StarBorder'
 
 const Works = () => {
-
-  const scrollRef = useRef(null);
-
-const scrollLeft = () => {
-  scrollRef.current?.scrollBy({
-    left: -500,
-    behavior: "smooth",
-  });
-};
-
-const scrollRight = () => {
-  scrollRef.current?.scrollBy({
-    left: 500,
-    behavior: "smooth",
-  });
-};
-
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
@@ -37,137 +16,66 @@ const scrollRight = () => {
   }, []);
 
   return (
-    <div
+    <section
       id="works"
-      className="
-      relative
-      min-h-screen
-      bg-(--bg-color)
-      text-(--text-color)
-      px-6
-      py-20
-      overflow-hidden
-      "
+      className="min-h-screen bg-(--bg-color) text-(--text-color) md:py-40 px-6"
     >
-      <FloatingIcons />
 
-      <div className="max-w-full mx-auto pt-10 relative z-10">
+      <div className="max-w-7xl mx-auto">
+        <LogoLoopController />
 
-        <h2 className="text-6xl font-bold text-center">
-          Selected Works
-        </h2>
+        {/* Desktop Layout */}
+        <div className="flex flex-col lg:flex-row gap-16 items-start">
 
-        <p className="text-(--text-color) text-lg mt-4 mb-16 text-center">
-          Some projects I've built while learning and solving
-          real-world problems.
-        </p>
+          {/* Left */}
+          <div className="lg:w-1/3 w-full lg:sticky lg:top-28">
 
-        <div className="relative">
+            <h2 className="text-5xl md:text-6xl font-bold mt-3 overflow-hidden">
+              Selected
+              <br />
+              Works
+            </h2>
 
-  <button
-    onClick={scrollLeft}
-    className="leftscroll
-      absolute
-      left-0
-      top-1/2
-      -translate-y-1/2
-      z-20
-      w-12
-      h-12
-      rounded-full
-      border
-      border-(--border-color)
-      bg-(--bg-color)
-      flex
-      items-center
-      justify-center
-      hover:scale-110
-      transition
-    "
-  >
-    <FaChevronLeft />
-  </button>
+            <p className="mt-6 text-lg text-gray-400 leading-relaxed">
+              A collection of projects I've built while learning
+              backend development, machine learning and modern web
+              technologies.
+            </p>
 
-  <div
-    ref={scrollRef}
-    className="
-      flex
-      w-460
-      gap-8
-      overflow-x-auto
-      scroll-smooth
-      scrollbar-none
-      px-16
-      py-2
-    "
-  >
-    {projects.map((project) => (
-      <div
-        key={project._id}
-        className="max-w-142 max-h-full shrink-0"
-      >
-        <Card project={project} />
-      </div>
-    ))}
-  </div>
+            <StarBorder
+              as="a"
+              href="https://github.com/prd6?tab=repositories"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="white"
+              speed="5s"
+              className="px-4 py-2 text-sm mt-4"
+            >
+              <div className="flex gap-2 items-center">
+                <FaGithub />
+                <span>View All Projects</span>
+                <FaArrowRight />
+              </div>
+            </StarBorder>
+          </div>
 
-  <button
-    onClick={scrollRight}
-    className="rightscroll
-      absolute
-      right-0
-      top-1/2
-      -translate-y-1/2
-      z-20
-      w-12
-      h-12
-      rounded-full
-      border
-      border-(--border-color)
-      bg-(--bg-color)
-      flex
-      items-center
-      justify-center
-      hover:scale-110
-      transition
-    "
-  >
-    <FaChevronRight />
-  </button>
+          {/* Right */}
+          <div className="lg:w-2/3 w-full grid grid-cols-1 md:grid-cols-2 gap-8">
 
-</div>
+            {projects.map((project) => (
+              <Card
+                key={project._id}
+                project={project}
+                API_URL={API_URL}
+              />
+            ))}
 
-        <div className="flex justify-center mt-16">
-          <a
-            href="https://github.com/prd6?tab=repositories"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              px-8
-              py-3
-              border-2
-              border-(--border-color)
-              flex
-              gap-3
-              items-center
-              bg-[#1b1b1b]
-              rounded-xl
-              font-semibold
-              transition-all
-              duration-300
-              hover:bg-[#0e0e0e]
-              hover:text-(--text-color)
-              hover:-translate-y-1
-            "
-          >
-            <FaGithub />
-            See All Works
-            <FaArrowRight />
-          </a>
+          </div>
+
         </div>
 
       </div>
-    </div>
+    </section>
   );
 };
 

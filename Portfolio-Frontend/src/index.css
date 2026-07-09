@@ -2,6 +2,7 @@
 
 :root {
   --bg-color: black;
+  --nav-bg-color: rgba(8, 8, 8, 0.6);
   --text-color: white;
   --border-color: black;
   --spotlight-color: white;
@@ -10,8 +11,11 @@
 * {
   font-family: monospace;
 }
+
 html {
   scroll-behavior: smooth;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 body {
@@ -19,50 +23,37 @@ body {
   color: var(--text-color);
 }
 
+@media (max-width: 768px) {
+  * {
+    overflow-x: hidden;
+  }
+}
+
 /*-----Navber-----*/
 
-.nav-container {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-}
-
-.nav-items ul li a:hover {
-  color: rgb(191, 191, 191);
-}
 
 /*-----Hero-----*/
 
-.hero-bio-text {
-  font-family:
-    "Fira Code", "JetBrains Mono", "Cascadia Code", Monaco, Consolas, monospace;
-}
 
-.hero-main-text {
-  -webkit-text-stroke: 5px black;
-  font-family: Impact;
-}
 
-/*-----Spotlight-----*/
+@media (max-width: 768px) {
+  .stop-ani-button {
+    top: 8rem;
+  }
 
-.landing {
-  position: relative;
-  overflow: hidden;
-  height: 100vh;
-}
+  .text-container {
+    width: 77%;
+    background: none;
+  }
 
-.spotlight {
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
+  .text-container h1 {
+    font-size: 2rem;
+  }
 
-  background: var(--spotlight-color);
-  mix-blend-mode: difference;
-
-  pointer-events: none;
-  transform: translate(-50%, -50%);
-  z-index: 0;
+  .text-container p {
+    font-size: larger;
+    height: 5rem;
+  }
 }
 
 /*-----Works-----*/
@@ -110,8 +101,6 @@ body {
   transform: translateY(-50%) scale(1.1);
 }
 
-
-
 /*-----Contact-----*/
 
 .contact-form input,
@@ -130,13 +119,47 @@ textarea:-webkit-autofill {
   -webkit-text-fill-color: #fff !important;
 }
 
-.submit-button {
-    cursor: pointer;
-    background: rgb(25, 25, 25);
-    opacity: 0.7;
+.contact-title {
+  font-size: 5rem;
 }
 
-.submit-button:hover {
-    opacity: 1;
-    color: var(--text-color);
+.contact-text {
+  font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+  #contact {
+    flex-direction: column;
+    padding: 40px 20px;
+    gap: 40px;
+  }
+
+  #contact>div {
+    width: 100%;
+    padding-left: 0 !important;
+  }
+
+  .contact-form {
+    width: 100% !important;
+  }
+
+  .animation-div {
+    width: 100%;
+    margin-top: 20px;
+  }
+
+  .animation-div svg {
+    width: 100% !important;
+    height: auto;
+  }
+
+  .contact-title {
+    padding-bottom: 10px;
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .contact-text {
+    text-align: center;
+  }
 }
