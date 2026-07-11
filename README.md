@@ -2,7 +2,7 @@
 
 Personal portfolio built with **MERN**.
 
-**LIVE:** 🔗 https://reactbits.dev
+**LIVE:** 🔗 https://prd6.is-a.dev/
 
 ## ⚙️ Tech Stack
 
