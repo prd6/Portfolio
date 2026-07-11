@@ -110,7 +110,7 @@ const Contact = () => {
             />
 
             <StarBorder
-              as="button"
+              as="div"
               className="custom-class"
               color="white"
               speed="5s"

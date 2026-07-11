@@ -5,19 +5,31 @@ const MobileNav = () => {
   const items = [
     {
       label: "About",
-      bgColor: "#1B1722",
+      bgColor: "#000000b3",
       textColor: "#fff",
       links: [{ label: "About", href: "#hero" }],
     },
     {
       label: "Works",
-      bgColor: "#2F293A",
+      bgColor: "#000000b3",
       textColor: "#fff",
       links: [{ label: "Works", href: "#works" }],
     },
     {
+      label: "Constributions",
+      bgColor: "#000000b3",
+      textColor: "#fff",
+      links: [{ label: "Constributions", href: "#Constributions" }],
+    },
+    {
+      label: "Achivements",
+      bgColor: "#000000b3",
+      textColor: "#fff",
+      links: [{ label: "Achivements", href: "#Achivements" }],
+    },
+    {
       label: "Contact",
-      bgColor: "#2F293A",
+      bgColor: "#000000b3",
       textColor: "#fff",
       links: [{ label: "Contact", href: "#contact" }],
     },
@@ -32,7 +44,7 @@ const MobileNav = () => {
       menuColor="#fff"
       buttonBgColor="#111"
       buttonTextColor="#fff"
-      ease="circ.out"
+      ease="power3.out"
       theme="color"
       className="fixed top-4 left-1/2 z-50"
     />

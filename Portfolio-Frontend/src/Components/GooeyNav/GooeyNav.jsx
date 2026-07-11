@@ -146,13 +146,72 @@ const GooeyNav = ({
     return () => resizeObserver.disconnect();
   }, [activeIndex]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 200; // adjust offset
+
+      let currentIndex = 0;
+
+      items.forEach((item, index) => {
+        const section = document.querySelector(item.href);
+
+        if (!section) return;
+
+        if (scrollPosition >= section.offsetTop) {
+          currentIndex = index;
+        }
+      });
+
+      if (currentIndex !== activeIndex) {
+        setActiveIndex(currentIndex);
+
+        const activeLi = navRef.current?.querySelectorAll("li")[currentIndex];
+
+        if (activeLi) {
+          updateEffectPosition(activeLi);
+
+          if (textRef.current) {
+            textRef.current.classList.remove("active");
+            void textRef.current.offsetWidth;
+            textRef.current.classList.add("active");
+          }
+
+          if (filterRef.current) {
+            filterRef.current
+              .querySelectorAll(".particle")
+              .forEach((p) => p.remove());
+
+            makeParticles(filterRef.current);
+          }
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [activeIndex]);
+
   return (
     <div className="gooey-nav-container" ref={containerRef}>
       <nav>
         <ul ref={navRef}>
           {items.map((item, index) => (
             <li key={index} className={activeIndex === index ? 'active' : ''}>
-              <a href={item.href} onClick={e => handleClick(e, index)} onKeyDown={e => handleKeyDown(e, index)}>
+              <a
+                href={item.href}
+                onClick={(e) => {
+                  e.preventDefault();
+
+                  document.querySelector(item.href)?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start",
+                  });
+                  handleClick(e, index);
+                }}
+                onKeyDown={(e) => handleKeyDown(e, index)}
+              >
                 {item.label}
               </a>
             </li>

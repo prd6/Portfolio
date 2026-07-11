@@ -122,9 +122,9 @@
 .gooey-nav-container .effect.filter::before {
   content: '';
   position: absolute;
-  inset: -75px;
+  inset: -60px;
   z-index: -2;
-  background: black;
+  background: rgb(0, 0, 0);
 }
 
 .gooey-nav-container .effect.filter::after {

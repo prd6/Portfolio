@@ -170,7 +170,7 @@ const CardNav = ({
         </div>
 
         <div className="card-nav-content" aria-hidden={!isExpanded}>
-          {(items || []).slice(0, 3).map((item, idx) => (
+          {(items || []).map((item, idx) => (
             <div
               key={`${item.label}-${idx}`}
               className="nav-card"
@@ -180,7 +180,29 @@ const CardNav = ({
               <div className="nav-card-label">{item.label}</div>
               <div className="nav-card-links">
                 {item.links?.map((lnk, i) => (
-                  <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
+                  <a
+                    key={`${lnk.label}-${i}`}
+                    className="nav-card-link"
+                    href={lnk.href}
+                    aria-label={lnk.ariaLabel}
+                    onClick={(e) => {
+                      e.preventDefault();
+
+                      const section = document.querySelector(lnk.href);
+
+                      if (section) {
+                        section.scrollIntoView({
+                          behavior: "smooth",
+                          block: "start",
+                        });
+                      }
+
+                      // Optional: close the mobile menu
+                      setIsHamburgerOpen(false);
+                      setIsExpanded(false);
+                      tlRef.current?.reverse();
+                    }}
+                  >
                     <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                     {lnk.label}
                   </a>
